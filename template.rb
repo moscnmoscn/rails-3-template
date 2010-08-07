@@ -2,7 +2,7 @@
 # Create a Rails3 app to use Mongoid & mysql(2 Databases work together).
 # Gems/Plguins: Devise (user management), carrierwave(upload files) , minimagick(handle images), haml& sass, will_paginate.
 # Substitute Prototype with jQuery.
-# Usage: rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+# Usage: rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/blob/master/template.rb
 
 # More info: http://github.com/moscn/rails-3-template
 
