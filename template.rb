@@ -2,7 +2,7 @@
 # Create a Rails3 app to use Mongoid & mysql(2 Databases work together).
 # Gems/Plguins: Devise (user management), carrierwave(upload files) , minimagick(handle images), haml& sass, will_paginate.
 # Substitute Prototype with jQuery.
-# Usage: rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/blob/master/template.rb
+# Usage: rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
 
 # More info: http://github.com/moscn/rails-3-template
 
@@ -99,12 +99,12 @@ run "bundle install"
 
 puts "Substitute prototype with jQuery..."
 run 'rm public/javascripts/*'
-run 'curl -O http://code.jquery.com/jquery-1.4.2.js'
-run 'mv jquery-1.4.2.js public/javascripts'
+#run 'curl -O http://code.jquery.com/jquery-1.4.2.js'
+#run 'mv jquery-1.4.2.js public/javascripts'
 run 'git clone git://github.com/rails/jquery-ujs.git public/javascripts/jquery-ujs'
-gsub_file 'config/application.rb', /# config.action_view.javascript_expansions[:defaults] = %w(jquery rails)/ do
+gsub_file 'config/application.rb', /# config.action_view.javascript_expansions\[:defaults\] = %w\(jquery rails\)/  do
 <<-RUBY
-  config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.2', 'jquery-ujs/src/rails']
+  config.action_view.javascript_expansions[\:defaults] \= ['jquery-1.4.2', 'jquery-ujs/src/rails']
 RUBY
 end
 
@@ -113,3 +113,4 @@ git :add => '.'
 git :commit => "-m 'modified Rails app to use mysql & Mongoid , Devise (user management), carrierwave(upload files) , minimagick(handle images), haml& sass, will_paginate; Substitute prototype with jquery 1.4.2.'"
 
 puts "Done setting up your Rails app."
+puts "1.Please download jquery-1.4.2.js file and remove it to folder: public/javascripts"
