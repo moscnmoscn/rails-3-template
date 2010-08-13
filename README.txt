@@ -1,4 +1,4 @@
-==This template is based on Rails 3 and apply some features :
+This template is based on Rails 3 and apply some features :
 * You can choose which ORM (mysql or mongoid) you want.
 * Add Gems/Plguins support:
     *Devise (user management)
