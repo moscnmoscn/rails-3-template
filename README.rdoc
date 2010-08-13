@@ -9,11 +9,10 @@
    * will_paginate
 * Substitute Prototype with jQuery.
 = Usage: 
-
-    1. If you like using mysql:
-        rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
-    2. If you choose mongoid:
-        rails new app_name -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+1. If you like using mysql:
+   rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+2. If you choose mongoid:
+   rails new app_name -m http://github.com/moscn/rails-3-template/raw/master/template.rb
 
 When this command finished, you should customize your devise configuration follow these steps
 (refer to: http://wiki.github.com/fortuity/rails3-mongoid-devise/tutorial-walkthrough):
