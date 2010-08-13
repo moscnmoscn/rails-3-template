@@ -115,12 +115,13 @@ puts "compass using blueprint"
 run 'compass install blueprint'
 puts "Substitute prototype with jQuery..."
 run 'rm public/javascripts/*'
-run 'curl -O http://code.jquery.com/jquery-1.4.2.js'
-run 'mv jquery-1.4.2.js public/javascripts'
+run 'curl -L http://code.jquery.com/jquery-1.4.2.min.js > public/javascripts/jquery.js'
+run 'curl -L curl -L http://github.com/rails/jquery-ujs/raw/master/src/rails.js > public/javascripts/rails.js'
+
 run 'git clone git://github.com/rails/jquery-ujs.git public/javascripts/jquery-ujs'
 gsub_file 'config/application.rb', /# config.action_view.javascript_expansions\[:defaults\] = %w\(jquery rails\)/  do
 <<-RUBY
-  config.action_view.javascript_expansions[\:defaults] \= ['jquery-1.4.2', 'jquery-ujs/src/rails']
+  config.action_view.javascript_expansions[\:defaults] \= ['jquery.js' , 'rails']
 RUBY
 end
 
