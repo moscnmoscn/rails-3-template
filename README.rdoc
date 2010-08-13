@@ -1,13 +1,14 @@
-This template is based on Rails 3 and apply some features :
+=Devise template
+==This template is based on Rails 3 and apply some features :
 * You can choose which ORM (mysql or mongoid) you want.
 * Add Gems/Plguins support:
-    *Devise (user management)
-    *carrierwave(upload files) 
-    *minimagick(handle images)
-    *haml& sass
-    *will_paginate
+    * Devise (user management)
+    * carrierwave(upload files) 
+    * minimagick(handle images)
+    * haml& sass
+    * will_paginate
 * Substitute Prototype with jQuery.
-Usage: 
+= Usage: 
 
     1. If you like using mysql:
         rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
