@@ -58,7 +58,7 @@ if orm_flag == "mongoid"
   puts "setting up Gemfile for Mongoid..."
   append_file 'Gemfile', "\n# Bundle gems needed for Mongoid\n"
   gsub_file 'Gemfile', /gem \'sqlite3-ruby/, '# gem \'sqlite3-ruby'
-  gem 'mongoid', '2.0.0.beta.15'
+  gem 'mongoid', '>=2.0.0.beta.16'
   gem 'bson_ext', '1.0.4'
   puts "installing Mongoid gems (takes a few minutes!)..."
   run 'bundle install'
