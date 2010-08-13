@@ -1,0 +1,34 @@
+This template is based on Rails 3 and apply some features :
+* You can choose which ORM (mysql or mongoid) you want.
+* Add Gems/Plguins support:
+    *Devise (user management)
+    *carrierwave(upload files) 
+    *minimagick(handle images)
+    *haml& sass
+    *will_paginate
+* Substitute Prototype with jQuery.
+Usage: 
+
+    1. If you like using mysql:
+        rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+    2. If you choose mongoid:
+        rails new app_name -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+
+When this command finished, you should customize your devise configuration follow these steps
+(refer to: http://wiki.github.com/fortuity/rails3-mongoid-devise/tutorial-walkthrough):
+ 	1. Use Devise to generate models and routes for a User:
+
+			$ rails generate devise User
+			
+	
+
+
+
+
+
+
+# More info: http://github.com/moscn/rails-3-template
+
+
+if you want rewrite this template you can refer:
+1.http://asciicasts.com/episodes/148-app-templates-in-rails-2-3
