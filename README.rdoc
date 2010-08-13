@@ -22,20 +22,10 @@
 
 3. When this command finished, you should customize your devise configuration follow these steps
 
-(refer to: http://wiki.github.com/fortuity/rails3-mongoid-devise/tutorial-walkthrough):
-3.1. Use Devise to generate models and routes for a User:
+(refer to: http://wiki.github.com/fortuity/rails3-mongoid-devise/tutorial-walkthrough)
 
-  $ rails generate devise User
-			
-	
-
-
-
-
-
-
-# More info: http://github.com/moscn/rails-3-template
 
 
 if you want rewrite this template you can refer:
 1.http://asciicasts.com/episodes/148-app-templates-in-rails-2-3
+
