@@ -10,8 +10,9 @@ orm_flag = ask("Which ORM do you like to be used?(mysql/mongoid)")
 puts "* Apply #{orm_flag} as your database"
 puts  "*Install Gems/Plguins List: Devise (user management), carrierwave(upload files) ,
       \t minimagick(handle images), haml& sass, will_paginate.
-       *Framework change: Substitute Prototype with jQuery."
-
+       *Framework change: Substitute Prototype with jQuery.
+       *Add i18n support for zh-CN."
+       
 puts "setting up source control with 'git'..."
 haml_flag = true
 # specific to Mac OS X
@@ -43,13 +44,13 @@ puts "ban spiders from your site..."
 gsub_file 'public/robots.txt', /# User-Agent/, 'User-Agent'
 gsub_file 'public/robots.txt', /# Disallow/, 'Disallow'
 
+puts "Append needed gem into Gemfile..."
 if orm_flag == "mysql"
    puts "setting up Gemfile for mysql... "
    append_file 'Gemfile', "\n# Bundle gems needed for mysql\n"
    gem "ruby-mysql"
 end
-  
-puts "setting up Gemfile for Haml..."
+
 append_file 'Gemfile', "\n# Bundle gems needed for Haml\n"
 gem 'haml', '3.0.14'
 gem "rails3-generators", :group => :development
@@ -60,23 +61,25 @@ if orm_flag == "mongoid"
   gsub_file 'Gemfile', /gem \'sqlite3-ruby/, '# gem \'sqlite3-ruby'
   gem 'mongoid', '>=2.0.0.beta.16'
   gem 'bson_ext', '1.0.4'
-  puts "installing Mongoid gems (takes a few minutes!)..."
-  run 'bundle install'
-  puts "creating 'config/mongoid.yml' Mongoid configuration file..."
-  run 'rails generate mongoid:config'
 end
 
-
-puts "setting up Gemfile for Devise..."
 append_file 'Gemfile', "\n# Bundle gem needed for Devise\n"
 gem 'devise', '1.1.1'
+puts "setting up Gemfile for minimagic, will_paginate and carrierwave ..."
+append_file 'Gemfile', "\n# Bundle gem needed \n"
+gem 'mini_magick' 
+gem "will_paginate", '>=3.0.pre'
+gem "carrierwave-rails3", :require => "carrierwave"
+gem "compass"
 
-puts "installing Devise gem (takes a few minutes!)..."
+
 run 'bundle install'
-
-#generate install devise
+if orm_flag == "mongoid"
+  run 'rails generate mongoid:config'
+end
 run 'rails generate devise:install'
-
+puts "compass using blueprint"
+run 'compass install blueprint'
 
 puts "modifying environment configuration files for Devise..."
 gsub_file 'config/environments/development.rb', /# Don't care if the mailer can't send/, '### ActionMailer Config'
@@ -104,15 +107,7 @@ config.i18n.fallbacks = true
 RUBY
 end
 
-puts "setting up Gemfile for minimagic, will_paginate and carrierwave ..."
-append_file 'Gemfile', "\n# Bundle gem needed \n"
-gem 'mini_magick' 
-gem "will_paginate", '>=3.0.pre'
-gem "carrierwave-rails3", :require => "carrierwave"
-gem "compass"
-run "bundle install"
-puts "compass using blueprint"
-run 'compass install blueprint'
+
 puts "Substitute prototype with jQuery..."
 run 'rm public/javascripts/*'
 run 'curl -L http://code.jquery.com/jquery-1.4.2.min.js > public/javascripts/jquery.js'
@@ -125,9 +120,27 @@ gsub_file 'config/application.rb', /# config.action_view.javascript_expansions\[
 RUBY
 end
 
+
+
+
+
+puts "Add i18n support for zh-CN..."
+run 'curl -L http://github.com/svenfuchs/rails-i18n/raw/master/rails/locale/zh-CN.yml > config/locales/zh-CN.yml'
+run 'curl -L http://gist.github.com/raw/523910/dcfe0d8b34a14a87f90d547dd12fa6ca393de237/devise_zh-CN.yml > config/locales/devise_zh-CN.yml'
+
+gsub_file 'config/application.rb', /# config.i18n.default_locale = :de/  do
+<<-RUBY
+  config.i18n.load_path \+\= Dir[Rails.root.join('config', 'locales', 'cities', '*.{rb,yml}').to_s]
+  config.i18n.default_locale \= \:'zh-CN'
+RUBY
+end
+
+
 puts "checking everything into git..."
 git :add => '.'
 git :commit => "-m 'modified Rails app to use #{orm_flag}, Devise (user management), carrierwave(upload files) , minimagick(handle images), haml& sass, will_paginate; Substitute prototype with jquery 1.4.2.'"
+
+
 
 
 puts "Your new Rails application has been done!\n"

@@ -10,6 +10,7 @@
   * will_paginate
 
 * Substitute Prototype with jQuery.
+* Add i18n support for zh-CN.
 
 == Usage: 
 1. If you like using mysql:
