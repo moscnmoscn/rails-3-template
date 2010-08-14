@@ -14,11 +14,11 @@
 == Usage: 
 1. If you like using mysql:
 
-  rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+  rails new app_name -d mysql -m http://github.com/moscn/rails-3-template/raw/master/devise_template.rb
 
 2. If you choose mongoid:
 
-  rails new app_name -m http://github.com/moscn/rails-3-template/raw/master/template.rb
+  rails new app_name -m http://github.com/moscn/rails-3-template/raw/master/devise_template.rb
 
 3. When this command finished, you should customize your devise configuration follow these steps
 
