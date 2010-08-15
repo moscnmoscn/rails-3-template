@@ -130,7 +130,7 @@ run 'curl -L http://gist.github.com/raw/523910/dcfe0d8b34a14a87f90d547dd12fa6ca3
 
 gsub_file 'config/application.rb', /# config.i18n.default_locale = :de/  do
 <<-RUBY
-  config.i18n.load_path \+\= Dir[Rails.root.join('config', 'locales', 'cities', '*.{rb,yml}').to_s]
+  config.i18n.load_path \+\= Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
   config.i18n.default_locale \= \:'zh-CN'
 RUBY
 end
